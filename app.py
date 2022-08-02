@@ -40,6 +40,11 @@ def create_app(test_config=None):
                                 'GET,PUT,POST,PATCH,DELETE,OPTIONS')
         return response
 
+    @app.route('/test')
+    def list_livres():
+        return jsonify({
+            "message":"hello heroku!"
+        })
  
     @app.route('/livres')
     @requires_auth('get:livres')
