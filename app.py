@@ -41,7 +41,7 @@ def create_app(test_config=None):
         return response
 
     @app.route('/test')
-    def list_livres():
+    def test_heroku():
         return jsonify({
             "message":"hello heroku!"
         })
