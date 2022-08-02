@@ -42,8 +42,11 @@ def create_app(test_config=None):
 
     @app.route('/test')
     def test_heroku():
+        livres = Livre.query.all()
         return jsonify({
-            "message":"hello heroku!"
+            "message":"hello heroku!",
+            'nombre_livre': len(livres),
+            'livres':[livre.format() for livre in livres]
         })
  
     @app.route('/livres')
