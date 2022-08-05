@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "d39b145b-2ec1-4e73-9ca3-3766397344b3",
+		"name": "api en ligne",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21940202"
+	},
+	"item": [
+		{
+			"name": "recuperer les categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/categories",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajouter une categorie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"description\": \"Description de la categorie delete\",\r\n            \"libelle\": \"categorie delete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/categories",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modifier une categorie",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Description de la categorie modifier\",\r\n    \"libelle\": \"categorie modifier\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/categories/2",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categories",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperer une categorie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/categories/1",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperer les livres",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/livres",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"livres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperer un livre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/livres/1",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"livres",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajouter un livre",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categorie_id\": 2,\r\n    \"dateparution\": \"Thu, 05 Feb 1998 00:00:00 GMT\",\r\n    \"editeur\": \"editeur3\",\r\n    \"isbn\": \"isbn3\",\r\n    \"titre\": \"titre3\",\r\n    \"version\": \"version3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/livres",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"livres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modifier un livre",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categorie_id\": 1,\r\n    \"dateparution\": \"Thu, 05 Feb 1998 00:00:00 GMT\",\r\n    \"editeur\": \"editeur modifier\",\r\n    \"isbn\": \"isbn modifier\",\r\n    \"titre\": \"titre modifier\",\r\n    \"version\": \"version modifier\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/livres/1",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"livres",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperer les livres par categorie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/categories/2/livres",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categories",
+						"2",
+						"livres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "supprimer une categorie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/categories/3",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categories",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "supprimer un livre",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://apibooksipenet.herokuapp.com/livres/3",
+					"protocol": "https",
+					"host": [
+						"apibooksipenet",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"livres",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
