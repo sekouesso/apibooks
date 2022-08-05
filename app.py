@@ -40,18 +40,9 @@ def create_app(test_config=None):
                                 'GET,PUT,POST,PATCH,DELETE,OPTIONS')
         return response
 
-    @app.route('/test')
-    def test_heroku():
-        livres = Livre.query.all()
-        return jsonify({
-            "message":"hello heroku!",
-            'nombre_livre': len(livres),
-            'livres':[livre.format() for livre in livres]
-        })
  
     @app.route('/livres')
-    @requires_auth('get:livres')
-    def list_livres(payload):
+    def list_livres():
         livres = Livre.query.all()
         return jsonify({
             'nombre_livre': len(livres),
@@ -59,8 +50,7 @@ def create_app(test_config=None):
         })
 
     @app.route('/livres/<int:id>')
-    @requires_auth('get:livre')
-    def un_livre(payload,id):
+    def un_livre(id):
         livre = Livre.query.get(id)
         if not livre:
             abort(404)
@@ -71,8 +61,7 @@ def create_app(test_config=None):
             })
 
     @app.route('/livres',methods=['POST','GET'])
-    @requires_auth('post:livre')
-    def add_livre(payload):
+    def add_livre():
         body = request.get_json()
         new_isbn = body.get('isbn', None)
         new_titre = body.get('titre', None)
@@ -94,8 +83,7 @@ def create_app(test_config=None):
             })
 
     @app.route('/livres/<int:id>', methods=['GET','PATCH'])
-    @requires_auth('patch:livre')
-    def update_livres(payload,id):
+    def update_livres(id):
         livre = Livre.query.get(id)
         body = request.get_json()
         new_isbn = body.get('isbn', None)
@@ -123,8 +111,7 @@ def create_app(test_config=None):
             })
 
     @app.route('/livres/<int:id>',methods=['DELETE','GET'])
-    @requires_auth('delete:livre')
-    def delete_livre(payload,id):
+    def delete_livre(id):
         livre = Livre.query.get(id)
         if not livre:
             abort(404)
@@ -140,8 +127,7 @@ def create_app(test_config=None):
                 })
 
     @app.route('/categories')
-    @requires_auth('get:categories')
-    def list_categories(payload):
+    def list_categories():
         categories = Categorie.query.all()
         return jsonify({
             'nombre_categorie':len(categories),
@@ -149,8 +135,7 @@ def create_app(test_config=None):
         })
 
     @app.route('/categories/<int:id>')
-    @requires_auth('get:categorie')
-    def un_categorie(payload,id):
+    def un_categorie(id):
         categorie = Categorie.query.get(id)
         if categorie is None:
             abort(404)
@@ -161,8 +146,7 @@ def create_app(test_config=None):
             })
 
     @app.route('/categories/<int:id>/livres')
-    @requires_auth('get:livres_categorie')
-    def get_livres_by_category(payload,id):
+    def get_livres_by_category(id):
         categorie = Categorie.query.get(id)
         if categorie is None:
             abort(404)
@@ -175,8 +159,7 @@ def create_app(test_config=None):
         })
 
     @app.route('/categories', methods=['GET','POST'])
-    @requires_auth('post:categorie')
-    def add_category(payload):
+    def add_category():
         body = request.get_json()
         new_libelle = body.get('libelle', None)
         new_description = body.get('description', None)
@@ -193,8 +176,7 @@ def create_app(test_config=None):
             })
 
     @app.route('/categories/<int:id>',methods=['GET','PATCH'])
-    @requires_auth('patch:categorie')
-    def update_categorie(payload,id):
+    def update_categorie(id):
         categorie = Categorie.query.get(id)
         if categorie is None:
             abort(404)
@@ -214,8 +196,7 @@ def create_app(test_config=None):
             })
 
     @app.route('/categories/<int:id>', methods=['GET','DELETE'])
-    @requires_auth('delete:categorie')
-    def delete_categorie(payload,id):
+    def delete_categorie(id):
         categorie = Categorie.query.get(id)
         if categorie is None:
             abort(404)

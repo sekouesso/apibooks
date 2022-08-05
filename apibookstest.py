@@ -63,7 +63,7 @@ class BooksapitestCase(unittest.TestCase):
     """
 
     def test_get_all_categories(self):
-        res = self.client().get('/categories',headers=access_token_auth_header)
+        res = self.client().get('/categories')
         # ici on récupère les données provenant de la Response
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
@@ -71,7 +71,7 @@ class BooksapitestCase(unittest.TestCase):
         self.assertTrue(len(data['categories']))
 
     def test_get_all_livres(self):
-        res = self.client().get('/livres',headers=access_token_auth_header)
+        res = self.client().get('/livres')
         # ici on récupère les données provenant de la Response
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
@@ -79,14 +79,14 @@ class BooksapitestCase(unittest.TestCase):
         self.assertTrue(len(data['livres']))
     
     def test_create_new_categorie(self):
-        res=self.client().post('/categories', json = self.new_categorie,headers=access_token_auth_header)
+        res=self.client().post('/categories', json = self.new_categorie)
         data=json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['categories'])
         self.assertTrue(len(data['categories']))
 
     def test_create_new_livre(self):
-        res=self.client().post('/livres', json = self.new_livre,headers=access_token_auth_header)
+        res=self.client().post('/livres', json = self.new_livre)
         data=json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['livres'])
@@ -114,7 +114,7 @@ class BooksapitestCase(unittest.TestCase):
     """
     
     def test_get_categorie(self):
-        res=self.client().get('/categories/1', headers=access_token_auth_header)
+        res=self.client().get('/categories/1')
         data=json.loads(res.data)
         #categorie=Categorie.query.filter(Categorie.id == 2).one_or_none()
         self.assertEqual(res.status_code, 200)
@@ -122,7 +122,7 @@ class BooksapitestCase(unittest.TestCase):
         self.assertTrue(data['categorie'])
 
     def test_get_categorie_livres(self):
-        res=self.client().get('/categories/1/livres', headers=access_token_auth_header)
+        res=self.client().get('/categories/1/livres')
         data=json.loads(res.data)
         #categorie=Categorie.query.filter(Categorie.id == 2).one_or_none()
         self.assertEqual(res.status_code, 200)
@@ -131,7 +131,7 @@ class BooksapitestCase(unittest.TestCase):
         self.assertTrue(data['nombre_livre'])
     
     def test_get_livree(self):
-        res=self.client().get('/livres/1', headers=access_token_auth_header)
+        res=self.client().get('/livres/1')
         data=json.loads(res.data)
         #categorie=Categorie.query.filter(Categorie.id == 2).one_or_none()
         self.assertEqual(res.status_code, 200)
@@ -139,7 +139,7 @@ class BooksapitestCase(unittest.TestCase):
         self.assertTrue(data['livre'])
     
     def test_categorie_which_does_not_exist(self):
-        res=self.client().delete('/categories/1000',headers=access_token_auth_header)
+        res=self.client().delete('/categories/1000')
         data=json.loads(res.data)
         categorie=Categorie.query.filter(Categorie.id == 1000).one_or_none()
         self.assertEqual(res.status_code, 404)
@@ -149,8 +149,7 @@ class BooksapitestCase(unittest.TestCase):
     
 
     def test_update_categorie(self):
-        res = self.client().patch('/categories/1', json=self.new_update_categorie,
-                                  headers=access_token_auth_header)
+        res = self.client().patch('/categories/1', json=self.new_update_categorie)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['message'],"modification effectuée avec succès")
